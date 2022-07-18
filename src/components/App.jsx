@@ -16,7 +16,8 @@ export class App extends Component  {
     page: 1,
     loading: false,
     showModal: false,
-    largeImageURL: ''
+    largeImageURL: '',
+    tags: ''
   }
 
   componentDidUpdate(prevProps, PrevState) {
@@ -41,19 +42,13 @@ export class App extends Component  {
   toggleModal = () =>{
     this.setState(({showModal}) => ({showModal: !showModal}))
   }
-  getLargeImageUrl = (largeImageURL) => {
+  onShowModal = ({ largeImageURL,tags }) => {
     this.toggleModal();
-//     if (!largeImageURL) {
-//        return;
-// }
-    this.setState({ largeImageURL });
+    this.setState({ largeImageURL, tags });
   }
   render() {
-    const { loading, pictures, showModal, largeImageURL } = this.state;
+    const { loading, pictures, showModal, largeImageURL, tags } = this.state;
     
-    
-   
-
 
     return <AppContainer>
       <Searchbar onSubmit={this.handleFormSubmit} />
@@ -65,8 +60,8 @@ export class App extends Component  {
      />}
       
   
-      {pictures && <ImageGallery pictures={pictures} getLargeImageUrl={this.getLargeImageUrl } />}
-    {showModal && <Modal ><img src={largeImageURL} alt="щз" /></Modal>}
+      {pictures && <ImageGallery pictures={pictures} onShowModal={this.onShowModal } />}
+    {showModal && <Modal ><img src={largeImageURL} alt={tags} /></Modal>}
     </AppContainer>;
   }
 };

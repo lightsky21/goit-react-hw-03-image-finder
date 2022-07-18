@@ -4,13 +4,14 @@ import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 
 class ImageGalleryItem extends Component {
   render() {
-    const { id, largeImageURL, webformatURL, getLargeImageUrl } = this.props;
+    const { id, largeImageURL, webformatURL, onShowModal, tags } = this.props;
+
     return (
       <GalleryItem key={id}>
         <GalleryImage
           src={webformatURL}
-          alt="op"
-          onClick={() => getLargeImageUrl(largeImageURL)}
+          alt={tags}
+          onClick={() => onShowModal({ largeImageURL, tags })}
         />
       </GalleryItem>
     );

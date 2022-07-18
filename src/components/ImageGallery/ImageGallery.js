@@ -6,15 +6,16 @@ import ImageGalleryItem from 'components/ImageGalleryItem';
 
 class ImageGallery extends Component {
   render() {
-    const { pictures, getLargeImageUrl } = this.props;
+    const { pictures, onShowModal } = this.props;
     return (
       <Gallery>
-        {pictures.map(({ id, webformatURL, largeImageURL }) => (
+        {pictures.map(({ id, webformatURL, largeImageURL, tags }) => (
           <ImageGalleryItem
             id={id}
             webformatURL={webformatURL}
             largeImageURL={largeImageURL}
-            getLargeImageUrl={getLargeImageUrl}
+            onShowModal={onShowModal}
+            tags={tags}
           />
         ))}
       </Gallery>
