@@ -9,7 +9,7 @@ class ImageGallery extends Component {
     const { pictures, onShowModal } = this.props;
     return (
       <Gallery>
-        {pictures.map(({ id, webformatURL, largeImageURL, tags }) => (
+        {pictures.map(({ webformatURL, largeImageURL, tags }, id) => (
           <ImageGalleryItem
             id={id}
             webformatURL={webformatURL}
