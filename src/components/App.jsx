@@ -24,7 +24,8 @@ export class App extends Component  {
     if (PrevState.pictureName !== this.state.pictureName) {
       this.setState({
         loading: true,
-      pictures: null})
+        pictures: null,
+      page: 1})
       fetch(`https://pixabay.com/api/?q=${this.state.pictureName}&page=${this.state.page}&key=27052738-1c695e8f266ee15d7b1e30a8e&image_type=photo&orientation=horizontal&per_page=12`)
         .then(res => res.json()).then(
           pictures => this.setState({ pictures: pictures.hits })
@@ -61,7 +62,7 @@ export class App extends Component  {
       
   
       {pictures && <ImageGallery pictures={pictures} onShowModal={this.onShowModal } />}
-    {showModal && <Modal ><img src={largeImageURL} alt={tags} /></Modal>}
+    {showModal && <Modal onClose ={this.toggleModal}><img src={largeImageURL} alt={tags} /></Modal>}
     </AppContainer>;
   }
 };
