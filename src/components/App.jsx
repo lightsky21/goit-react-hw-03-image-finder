@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppContainer } from './App.styled';
+import { AppContainer, } from './App.styled';
 import Searchbar from "./Searchbar";
 import ImageGallery from "./ImageGallery";
 import Modal from './Modal'
@@ -83,18 +83,23 @@ export class App extends Component  {
       {loading && <Audio
     height="100"
     width="100"
-    color='orange'
+    color='blue'
         ariaLabel='loading'
+        wrapperStyle={{position: "relative",
+  margin: "0 auto"}}
         
      />}
   
       {pictures && <><ImageGallery pictures={pictures} onShowModal={this.onShowModal} /> 
         {loading && <Audio
-    height="100"
-    width="100"
-    color='orange'
-    ariaLabel='loading'
-        
+          height="100"
+          width="100"
+          color='blue'
+          ariaLabel='loading'
+          wrapperStyle={{
+            position: "relative",
+            margin: "0 auto"
+          }}
      />}
         <Button onClick={ this.handleButtonClick} /></>}
     {showModal && <Modal onClose ={this.toggleModal}><img src={largeImageURL} alt={tags} /></Modal>}

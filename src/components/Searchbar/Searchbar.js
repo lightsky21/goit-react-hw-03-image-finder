@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+// import { ReactComponent as SearchIcon } from '../images/search.svg';
+import {
+  SearchbarHeader,
+  SearchForm,
+  SearchFormBtn,
+  BtnLabel,
+  Input,
+} from './Searchbar.styled';
 
 class Searchbar extends Component {
   state = {
@@ -20,13 +28,13 @@ class Searchbar extends Component {
   };
   render() {
     return (
-      <header className="searchbar" onSubmit={this.handleSubmit}>
-        <form className="form">
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
-          </button>
+      <SearchbarHeader onSubmit={this.handleSubmit}>
+        <SearchForm>
+          <SearchFormBtn type="submit">
+            <BtnLabel>Search</BtnLabel>
+          </SearchFormBtn>
 
-          <input
+          <Input
             className="input"
             type="text"
             autoComplete="off"
@@ -35,8 +43,8 @@ class Searchbar extends Component {
             onChange={this.handleNameChange}
             value={this.state.pictureName}
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchbarHeader>
     );
   }
 }
