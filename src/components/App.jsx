@@ -4,8 +4,9 @@ import Searchbar from "./Searchbar";
 import ImageGallery from "./ImageGallery";
 import Modal from './Modal'
 import Button from './Button';
+import Loader from './Loader';
 
-import { Audio } from  'react-loader-spinner'
+
 
 
 
@@ -79,29 +80,8 @@ export class App extends Component  {
 
     return <AppContainer>
       <Searchbar onSubmit={this.handleFormSubmit} />
-      
-      {loading && <Audio
-    height="100"
-    width="100"
-    color='blue'
-        ariaLabel='loading'
-        wrapperStyle={{position: "relative",
-  margin: "0 auto"}}
-        
-     />}
-  
-      {pictures && <><ImageGallery pictures={pictures} onShowModal={this.onShowModal} /> 
-        {loading && <Audio
-          height="100"
-          width="100"
-          color='blue'
-          ariaLabel='loading'
-          wrapperStyle={{
-            position: "relative",
-            margin: "0 auto"
-          }}
-     />}
-        <Button onClick={ this.handleButtonClick} /></>}
+      {loading && <Loader/>}
+      {pictures && <><ImageGallery pictures={pictures} onShowModal={this.onShowModal} /> {loading && <Loader/>} <Button onClick={ this.handleButtonClick} /></>}
     {showModal && <Modal onClose ={this.toggleModal}><img src={largeImageURL} alt={tags} /></Modal>}
     </AppContainer>;
     
