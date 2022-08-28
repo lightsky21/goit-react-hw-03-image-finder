@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Overlay, ModalImage } from './Modal.styled';
 
 class Modal extends Component {
+  static defaultProps = { onClose: null, children: null };
+
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    children: PropTypes.object.isRequired,
+  };
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }

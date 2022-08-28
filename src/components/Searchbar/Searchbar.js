@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // import { ReactComponent as SearchIcon } from '../images/search.svg';
 import {
   SearchbarHeader,
@@ -9,6 +10,12 @@ import {
 } from './Searchbar.styled';
 
 class Searchbar extends Component {
+  static defaultProps = { onSubmit: null };
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     pictureName: '',
   };

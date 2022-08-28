@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Gallery } from './ImageGallery.styled';
 
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
 class ImageGallery extends Component {
+  static propTypes = {
+    pictures: PropTypes.arrayOf(PropTypes.object.isRequired),
+    onShowModal: PropTypes.func.isRequired,
+  };
   render() {
     const { pictures, onShowModal } = this.props;
     return (
